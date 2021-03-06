@@ -1,7 +1,28 @@
+body {
+    padding: 0;
+    margin: 0;
+}
+
 .mainDiv{
     width: 150px;
     height: 150px;
-    position: absolute;
-    top: 0;
-    left: 0;
+}
+
+.calc-form {
+    padding: 2rem;
+    display: flex;
+    align-items: center;
+}
+
+.calc-form .formcontrol {
+    margin-right: 2rem;
+}
+
+.container {
+    width: 75%;
+    margin: auto;
+}
+
+.mdc-top-app-bar {
+    position: relative;
 }

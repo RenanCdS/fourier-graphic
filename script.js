@@ -4,8 +4,8 @@
     fourierApp.controller('FourierController', ['$scope', function (scope) {
         window.scrollTo(0, 0);
 
-        scope.base ={
-            selectedRA: 40, 
+        scope.base = {
+            selectedRA: 40,
             iterator: 1,
             freqQtd: 4,
             time: 100,
@@ -18,26 +18,26 @@
             var frequencyMax = (scope.base.freqQtd - 1) / (scope.base.selectedRA * 100);
             var diffFreq = (frequencyMax - frquencyMin) / scope.base.time;
             for (var i = 0; i <= scope.base.time; i++) {
-                var xValue = parseFloat((diffFreq*i).toFixed(5));
+                var xValue = parseFloat((diffFreq * i).toFixed(5));
                 var xAsis = xValue;
                 var yAsis = [];
 
                 var lastIterator = 0;
                 if (scope.base.iterator > 1) {
-                    for (var j = 1; j < scope.base.iterator; j++){
+                    for (var j = 1; j < scope.base.iterator; j++) {
                         var multiplicity = j + lastIterator;
 
                         yAsis.push(getElement(multiplicity, scope.base.selectedRA, xValue));
 
                         lastIterator = j;
                     }
-                }else{
+                } else {
                     yAsis.push(0);
                 }
 
-                yAsis = getFullElement(yAsis.reduce((total, num) => total+num));
+                yAsis = getFullElement(yAsis.reduce((total, num) => total + num));
 
-                scope.base.points[xAsis] = yAsis; 
+                scope.base.points[xAsis] = yAsis;
             }
             scope.createGraphic(scope.base.points);
         }
@@ -47,7 +47,7 @@
             scope.base.time = 100;
             scope.base.points = {};
         }
-        scope.createGraphic = function (points){
+        scope.createGraphic = function (points) {
             let xPoints = Object.keys(points);
             let yPoints = Object.values(points);
 
@@ -70,10 +70,21 @@
         }
     }]);
 })();
-function getFullElement(yAsis){
+function getFullElement(yAsis) {
     return (0.5 + ((2 / Math.PI) * yAsis));
 }
-function getElement(multiplicty, RA, qtdTime){
-    var f0 = 100 * RA;  
-    return (1 / multiplicty) * (Math.sin( multiplicty * (2*Math.PI*f0) * qtdTime));
+function getElement(multiplicty, RA, qtdTime) {
+    var f0 = 100 * RA;
+    return (1 / multiplicty) * (Math.sin(multiplicty * (2 * Math.PI * f0) * qtdTime));
 }
+
+document.querySelectorAll('.mdc-text-field').forEach((element, index) => {
+    if (index === 0)
+        element.focus();
+
+    setTimeout(() => {
+        element.focus();
+    }, 100);
+
+    new mdc.textField.MDCTextField(element);
+});
