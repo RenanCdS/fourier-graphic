@@ -3,10 +3,7 @@
 
 <head>
     <title>Comunicação de dados | Gráfico de Fourier</title>
-    <script src="https://code.angularjs.org/1.6.0/angular.js"></script>
-    <script src="https://code.angularjs.org/1.6.0/angular-route.js"></script>
     <script src="scripts/chartist.js"></script>
-    <script src="scripts/jquery-1.5.2.js"></script>
     <link href="scripts/chartist.css" rel="stylesheet" type="text/css" />
 
     <!-- Material -->
@@ -18,7 +15,7 @@
     <meta charset="utf-8">
 </head>
 
-<body ng-app="fourierApp" ng-controller="FourierController as appCtrl" ng-init="init()">
+<body>
     <header class="mdc-top-app-bar">
         <div class="mdc-top-app-bar__row">
             <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-start">
@@ -32,8 +29,7 @@
                 <label class="mdc-text-field mdc-text-field--filled">
                     <span class="mdc-text-field__ripple"></span>
                     <span class="mdc-floating-label" id="my-label-id">Final do RA:</span>
-                    <input class="mdc-text-field__input" type="number" id="fname" name="fname"
-                        ng-model="base.selectedRA">
+                    <input class="mdc-text-field__input" type="number" id="fname" name="fname">
                     <span class="mdc-line-ripple"></span>
                 </label>
             </div>
@@ -41,16 +37,29 @@
                 <label class="mdc-text-field mdc-text-field--filled">
                     <span class="mdc-text-field__ripple"></span>
                     <span class="mdc-floating-label" id="my-label-id">Termos:</span>
-                    <input class="mdc-text-field__input" type="number" id="lname" name="lname" ng-model="base.iterator">
+                    <input class="mdc-text-field__input" type="number" id="lname" name="lname">
                     <span class="mdc-line-ripple"></span>
                 </label>
             </div>
-            <input class="mdc-button mdc-button--raised" type="submit" ng-click="init()">
+            <input class="mdc-button mdc-button--raised" type="submit" onclick="createGraphic()">
+        </div>
+        <div class="equation-label hidden d-flex align-items">
+            <span class="mr-1">f(t) = </span>
+            <span class="d-flex flex-direction-column division-block">
+                <span class="divisor">1</span>
+                <span>2</span>
+            </span>
+            <span class="default mr-1"> + </span>
+            <span class="default d-flex flex-direction-column division-block">
+                <span class="divisor">2</span>
+                <span>π</span>
+            </span>
+            <span class="default mr-1">(</span>
         </div>
         <div id="graphic" class="ct-chart ct-perfect-fourth"></div>
     </div>
 </body>
-<script src="script.js"></script>
+<script src="index.js"></script>
 <link href="style.css" rel="stylesheet" type="text/css" />
 
 </html>
