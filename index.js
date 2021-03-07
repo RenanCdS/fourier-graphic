@@ -13,7 +13,6 @@ function populateCoordinates() {
         xPoint += POINT_INTERVAL;
     }
     createTermElement(1, quantityOfTerms);
-
 }
 
 function manageEquationInfoFromForm() {
@@ -45,7 +44,8 @@ function getResultsFromEquation(xPoint, frequency, quantityOfTerms = 1) {
 function getResultsOfTerms(xPoint, frequency, quantityOfTerms) {
     let finalResult = 0;
     for (let termNumber = 0; termNumber < quantityOfTerms; termNumber++) {
-        finalResult += (1 / ((termNumber * 2) + 1)) * Math.sin(2 * Math.PI * frequency * xPoint);
+        const termPrefix = (termNumber * 2) + 1;
+        finalResult += (1 / termPrefix) * Math.sin(termPrefix * 2 * Math.PI * frequency * xPoint);
     }
 
     return finalResult;
@@ -58,12 +58,24 @@ function createTermElement(divisor, quantityOfTerms) {
     if (existingParenthese) {
         document.querySelector('.equation-label').removeChild(existingParenthese);
     }
+
+    const reticences = document.querySelector('.reticences');
+    if (reticences) {
+        document.querySelector('.equation-label').removeChild(reticences);
+    }
     const oldTermsInHTML = document.querySelectorAll('.equation-term');
     oldTermsInHTML.forEach(oldTerm => {
         document.querySelector('.equation-label').removeChild(oldTerm);
     });
 
     for (var i = 0; i < quantityOfTerms; i++) {
+        if (i >= 6) {
+            const reticences = document.createElement('span');
+            reticences.classList.add('reticences');
+            reticences.textContent = '...';
+            document.querySelector('.equation-label').appendChild(reticences);
+            break;
+        }
         let dividend = (i * 2) + 1;
         const equationTerm = document.createElement('span');
         equationTerm.classList.add('equation-term');
@@ -89,7 +101,7 @@ function createTermElement(divisor, quantityOfTerms) {
         divisionGroup.appendChild(dividendElement);
 
         const sinElement = document.createElement('span');
-        sinElement.textContent = dividend + ' sen(ω0t)';
+        sinElement.textContent = ` sen(${dividend} ωt)`;
 
         if (i !== 0)
             divisionBlock.appendChild(plusDigit);
