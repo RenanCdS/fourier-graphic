@@ -8,6 +8,9 @@ Foi usado o RA 40
 
 ## Membros do grupo
 Renan Castro
+
 Rachel Moreira
+
 Wellison P. Sousa
+
 Wesley Rogério
