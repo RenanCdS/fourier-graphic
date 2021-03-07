@@ -23,6 +23,41 @@ body {
     margin: auto;
 }
 
+.d-flex {
+    display: flex;
+}
+
+.align-items {
+    align-items: center;
+}
+
+.flex-direction-column {
+    flex-direction: column;
+}
+
+.division-block {
+    display: flex;
+    align-items: center;
+    margin-right: 1rem;
+}
+
+.division-block .divisor {
+    border-bottom: 1px solid black;
+}
+
+.hidden {
+    display: none;
+}
+
+.mr-1 {
+    margin-right: 1rem;
+}
+
+.equation-label .equation-term {
+    display: flex;
+    align-items: center;
+}
+
 .mdc-top-app-bar {
     position: relative;
 }
